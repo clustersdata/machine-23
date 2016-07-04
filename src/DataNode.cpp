@@ -15,7 +15,7 @@ DataNode::DataNode():
 
 }
 
-DataNode::DataNode(const DataSet &dataSet): DataNode()
+DataNode::DataNode(const DataSet& dataSet): DataNode()
 {
     data = dataSet;
 }
@@ -27,8 +27,12 @@ DataNode::~DataNode()
 
 }
 
-void DataNode::parition(int feature, DataNode::ErrorCallback callback)
+void DataNode::partition(int feature, DataNode::ErrorCallback callback, int depth)
 {
+    // recursion too deep
+    if ( depth < 0 )
+        return;
+
     // this shouldn't be called on a node which is not a leaf!!
     if ( !is_leaf)
         return;
@@ -47,6 +51,7 @@ void DataNode::parition(int feature, DataNode::ErrorCallback callback)
 
     int best_index = -1;
     double min_error = -1.0;
+    end = data.getPoints().size();
 
     for ( i = begin = 0; i != end; ++i) {
 
@@ -79,6 +84,12 @@ void DataNode::parition(int feature, DataNode::ErrorCallback callback)
 
     // now that we are a node and not a leaf, we can release the data
     data.getPoints().clear();
+
+    // recurse if necessary
+    if (depth > 0) {
+        left->partition(feature, callback, depth-1);
+        right->partition(feature, callback, depth-1);
+    }
 }
 
 void DataNode::computeError(DataNode::ErrorCallback callback)
@@ -105,7 +116,7 @@ const DataNode::dvec& DataNode::predict(const DataNode::dvec &x)
 
 double DataNode::totalError()
 {
-    if (is_leaf)
+    if (!is_leaf)
         return left->totalError() + right->totalError();
     else
         return error;

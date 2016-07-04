@@ -26,6 +26,7 @@ DataSet::DataSet(const DataSet &other):
 DataSet& DataSet::operator=(const DataSet &other)
 {
     points = other.points;
+    return *this;
 }
 
 

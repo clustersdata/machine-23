@@ -23,7 +23,7 @@ public:
     ~DataNode();
 
     //! Find best binary parition for given feature
-    void parition(int feature, ErrorCallback callback);
+    void partition(int feature, ErrorCallback callback, int depth = 0);
 
     //! Return total error. Note: must call computeError before
     double totalError();
