@@ -1,9 +1,11 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0)
 
 project(jonotree)
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
+
+set(CXX_STANDARD "c++14")
 
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
