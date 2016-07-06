@@ -21,7 +21,7 @@ public:
     ~AverageLearner() {}
 
     //! Return a prediction of the model
-    virtual DataSet::dvec predict(DataSet::dvec& x) const override final;
+    virtual DataSet::dvec predict(const DataSet::dvec& x) const override final;
 
     //! Return the error of the prediction vs. sample
     virtual double error(DataSet& dataSet) const override final;

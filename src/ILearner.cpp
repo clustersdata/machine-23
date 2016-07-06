@@ -5,6 +5,9 @@ namespace jono {
 void ILearner::setErrorCallback(Error::Callback error)
 {
     m_errorCallback = error;
+
+    if ( !m_errorCallback)
+        m_errorCallback = Error::l2;
 }
 
 void ILearner::setParameter(const std::string &name, double value)
@@ -12,7 +15,7 @@ void ILearner::setParameter(const std::string &name, double value)
     m_parameters[name] = value;
 }
 
-double ILearner::getParameter(const std::string &name) const
+double ILearner::parameter(const std::string &name) const
 {
     std::map<std::string, double>::const_iterator it = m_parameters.find(name);
 
@@ -27,7 +30,7 @@ std::map<std::string, double> &ILearner::parameters()
     return m_parameters;
 }
 
-std::vector<std::string> ILearner::getParameterNames() const
+std::vector<std::string> ILearner::parameterNames() const
 {
     std::vector<std::string> names;
     std::map<std::string, double>::const_iterator it;

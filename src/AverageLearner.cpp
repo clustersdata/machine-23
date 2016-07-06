@@ -4,7 +4,7 @@ namespace jono {
 
 
 
-DataSet::dvec AverageLearner::predict(DataSet::dvec &x) const
+DataSet::dvec AverageLearner::predict(const DataSet::dvec &x) const
 {
     return m_average;
 }
