@@ -5,12 +5,12 @@ namespace jono {
 TreeLearner::TreeLearner():
     m_left(),
     m_right(),
-    is_leaf(true),
-    feature_index(-1),
-    feature_value(0.0),
+    m_isLeaf(true),
+    m_featureIndex(-1),
+    m_featureValue(0.0),
     m_data(),
-    prediction(),
-    error(0.0)
+    m_prediction(),
+    m_error(0.0)
 {
 
 }
@@ -18,6 +18,7 @@ TreeLearner::TreeLearner():
 TreeLearner::TreeLearner(const DataSet& dataSet): TreeLearner()
 {
     m_data = dataSet;
+    m_prediction.resize(m_data.nresponses());
 }
 
 
@@ -25,6 +26,37 @@ TreeLearner::TreeLearner(const DataSet& dataSet): TreeLearner()
 TreeLearner::~TreeLearner()
 {
 
+}
+
+void TreeLearner::grow()
+{
+    // grow in a greedy manner: find the worst performing leaf
+    TreeLearner* splitLeaf = worstLeaf();
+
+    double best_error = -1.0;
+    int best_feature = -1;
+
+    // iterate over features to find the best one
+    for (int feature = 0; feature < splitLeaf->m_data.nfeatures(); ++feature) {
+        TreeLearner node;
+        node.m_errorCallback = splitLeaf->m_errorCallback;
+        node.m_data = splitLeaf->m_data;
+        node.m_isLeaf = true;
+
+        // split along feature
+        node.partition(feature, 0);
+
+        // update as necessary
+        if ( best_feature < 0 || best_error > node.totalError() ) {
+            best_feature = feature;
+            best_error = node.totalError();
+            splitLeaf->m_error = best_error;
+            splitLeaf->m_left = std::move(node.m_left);
+            splitLeaf->m_right = std::move(node.m_right);
+        }
+    }
+
+    splitLeaf->m_isLeaf = false;
 }
 
 
@@ -35,16 +67,16 @@ void TreeLearner::partition(int feature, int depth)
         return;
 
     // this shouldn't be called on a node which is not a leaf!!
-    if ( !is_leaf)
+    if ( !m_isLeaf)
         return;
 
     // set up current node
-    feature_index = feature;
-    is_leaf = false;
+    m_featureIndex = feature;
+    m_isLeaf = false;
     m_left = node_ptr(new TreeLearner);
     m_right = node_ptr(new TreeLearner);
-    m_left->is_leaf = true;
-    m_right->is_leaf = true;
+    m_left->m_isLeaf = true;
+    m_right->m_isLeaf = true;
 
     // sort dataset by feature
     m_data.sort(feature);
@@ -68,15 +100,17 @@ void TreeLearner::partition(int feature, int depth)
 
         // this index does a better job!
         if ( best_index < 0 || error < min_error) {
-            feature_value = m_data.getPoints()[i]->x[feature_index];
+            m_featureValue = m_data.getPoints()[i]->x[m_featureIndex];
 
             m_left->m_data = data1;
-            m_left->prediction = ave1;
-            m_left->error = err1;
+            m_left->m_prediction = ave1;
+            m_left->m_error = err1;
+            m_left->m_errorCallback = m_errorCallback;
 
             m_right->m_data = data2;
-            m_right->prediction = ave2;
-            m_right->error = err2;
+            m_right->m_prediction = ave2;
+            m_right->m_error = err2;
+            m_right->m_errorCallback = m_errorCallback;
 
             best_index = i;
             min_error = error;
@@ -95,8 +129,8 @@ void TreeLearner::partition(int feature, int depth)
 
 void TreeLearner::computeError()
 {
-    if (is_leaf)
-        error = m_errorCallback(m_data, prediction);
+    if (m_isLeaf)
+        m_error = m_errorCallback(m_data, m_prediction);
     else {
         m_left->computeError();
         m_right->computeError();
@@ -105,11 +139,11 @@ void TreeLearner::computeError()
 
 DataSet::dvec TreeLearner::predict(const DataSet::dvec &x) const
 {
-    if (is_leaf)
-        return prediction;
+    if (m_isLeaf)
+        return m_prediction;
 
     // else, have to traverse the tree
-    if ( x[feature_index] < feature_value)
+    if ( x[m_featureIndex] < m_featureValue)
         return m_left->predict(x);
     else
         return m_right->predict(x);
@@ -121,8 +155,8 @@ void TreeLearner::learn(DataSet &dataSet)
     m_left.reset();
     m_right.reset();
 
-    is_leaf = true;
-    error = 0.0;
+    m_isLeaf = true;
+    m_error = 0.0;
     m_data = dataSet;
 
 
@@ -131,10 +165,21 @@ void TreeLearner::learn(DataSet &dataSet)
 
 double TreeLearner::totalError()
 {
-    if (!is_leaf)
+    if (!m_isLeaf)
         return m_left->totalError() + m_right->totalError();
     else
-        return error;
+        return m_error;
+}
+
+TreeLearner *TreeLearner::worstLeaf()
+{
+    if (m_isLeaf)
+        return this;
+
+    TreeLearner* worst_left = m_left->worstLeaf();
+    TreeLearner* worst_right = m_right->worstLeaf();
+
+    return worst_right->m_error >= worst_left->m_error ? worst_right : worst_left;
 }
 
 

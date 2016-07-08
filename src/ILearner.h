@@ -11,7 +11,7 @@
 // includes from jono library
 #include "DataFrame.h"
 #include "DataSet.h"
-#include "Error.h"
+#include "ErrorFunctions.h"
 
 namespace jono {
 

@@ -41,13 +41,15 @@ public:
     double totalError();
 
 private:
+    //! Find leaf with worst error, used for growing the tree greedily
+    TreeLearner* worstLeaf();
 
     node_ptr m_left, m_right;
     DataSet m_data;
-    double error, feature_value;
-    dvec prediction;
-    int feature_index;
-    bool is_leaf;
+    double m_error, m_featureValue;
+    dvec m_prediction;
+    int m_featureIndex;
+    bool m_isLeaf;
 
 };
 

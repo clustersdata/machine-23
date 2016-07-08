@@ -57,6 +57,10 @@ public:
     //! Return number of responses
     int nresponses();
 
+
+    pvec::const_iterator cbegin() const;
+    pvec::const_iterator cend() const;
+
 private:
     //! Vector of pointers to data points
     pvec points;

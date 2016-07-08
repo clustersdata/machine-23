@@ -1,4 +1,4 @@
-#include "Error.h"
+#include "ErrorFunctions.h"
 
 namespace jono {
 

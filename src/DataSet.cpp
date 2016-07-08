@@ -96,4 +96,14 @@ int DataSet::nresponses()
     return points[0]->y.size();
 }
 
+DataSet::pvec::const_iterator DataSet::cbegin() const
+{
+    return points.cbegin();
+}
+
+DataSet::pvec::const_iterator DataSet::cend() const
+{
+    return points.cend();
+}
+
 } // namespace jono
