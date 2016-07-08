@@ -52,10 +52,10 @@ public:
     dvec averageResponse();
 
     //! Return number of features
-    int nfeatures();
+    int nfeatures() const;
 
     //! Return number of responses
-    int nresponses();
+    int nresponses() const;
 
 
     pvec::const_iterator cbegin() const;

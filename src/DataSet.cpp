@@ -80,7 +80,7 @@ DataSet::dvec DataSet::averageResponse()
     return average;
 }
 
-int DataSet::nfeatures()
+int DataSet::nfeatures() const
 {
     if ( points.size() < 1)
         return 0;
@@ -88,7 +88,7 @@ int DataSet::nfeatures()
     return points[0]->x.size();
 }
 
-int DataSet::nresponses()
+int DataSet::nresponses() const
 {
     if ( points.size() < 1)
         return 0;
