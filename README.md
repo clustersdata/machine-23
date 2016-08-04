@@ -10,4 +10,4 @@ This project is not intended to replace, or to compete with any other open-sourc
 
 ## Travis CI Status
 
-[![Build Status](https://travis-ci.org/scgmlz/hello-world.svg?branch=master)](https://travis-ci.org/scgmlz/hello-world)
+[![Build Status](https://travis-ci.org/jmf1sh/machine.svg?branch=master)](https://travis-ci.org/jmf1sh/machine)
