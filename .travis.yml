@@ -5,6 +5,20 @@ sudo: required
 os:   linux
 dist: trusty
 
+addons:
+  apt:
+    sources:
+    - sourceline: ppa:beineri/opt-qt542-trusty
+    packages:
+    - qt54base
+    - qt54multimedia
+    - xvfb
+
+env:
+  global:
+  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
+
+
 compiler: 
 - clang
 - gcc
