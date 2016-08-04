@@ -7,16 +7,14 @@ dist: wily
 
 addons:
   apt:
-    sources:
-    - sourceline: ppa:beineri/opt-qt542-trusty
+#    sources:
+#    - sourceline: ppa:beineri/opt-qt542-trusty
     packages:
-    - qt54base
-    - qt54multimedia
-    - xvfb
+    - qtbase5-dev
 
-env:
-  global:
-  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
+#env:
+#  global:
+#  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
 
 
 compiler: 
