@@ -10,7 +10,7 @@ addons:
     sources:
     - sourceline: ppa:beineri/opt-qt542-trusty
     packages:
-    - qt5base-dev
+    - qt54base
 
 env:
   global:
