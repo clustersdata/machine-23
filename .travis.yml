@@ -3,18 +3,18 @@ language: cpp
 sudo: required
 
 os:   linux
-dist: wily
+dist: trusy
 
 addons:
   apt:
-#    sources:
-#    - sourceline: ppa:beineri/opt-qt542-trusty
-#    packages:
-#    - qtbase5-dev
+    sources:
+    - sourceline: ppa:beineri/opt-qt542-trusty
+    packages:
+    - qt5base-dev
 
-#env:
-#  global:
-#  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
+env:
+  global:
+  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
 
 
 compiler: 
