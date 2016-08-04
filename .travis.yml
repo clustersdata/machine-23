@@ -26,4 +26,4 @@ script:
 - cd build
 - cmake ..
 - make
-- make test
+- xvfb-run ctest
