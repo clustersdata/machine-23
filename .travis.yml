@@ -9,8 +9,8 @@ addons:
   apt:
 #    sources:
 #    - sourceline: ppa:beineri/opt-qt542-trusty
-    packages:
-    - qtbase5-dev
+#    packages:
+#    - qtbase5-dev
 
 #env:
 #  global:
