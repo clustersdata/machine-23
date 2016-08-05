@@ -1,6 +1,7 @@
 #include "CSV.h"
 
 #include <cctype>
+#include <cwctype>
 
 namespace jono {
 
