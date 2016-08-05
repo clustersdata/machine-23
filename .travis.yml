@@ -29,10 +29,15 @@ install:
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then brew install qt5; fi
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then export PATH=$(brew --prefix)/opt/qt5/bin:$PATH; fi
 
+before_script:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3 # give xvfb some time to start
+
 script:
     - echo "Building for ${MKSPEC} in ${BUILD_MODE} mode..."
     - mkdir build
     - cd build
     - cmake ..
     - make
-    - xvfb-run ctest
+    - make test
