@@ -12,10 +12,10 @@ environment:
 before_build:
   - mkdir build
   - cd build
-  - cmake -G "Visual Studio 14 2015 Win64" ..
+  - cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_BUILD_TYPE=Release ..
 
 build_script:
-  - cmake --build .
+  - cmake --build . --config Release
 
 test_script:
   - ctest
