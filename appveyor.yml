@@ -8,12 +8,12 @@ configuration: Release
 
 environment:
     QTDIR: "C:\\Qt\\5.7\\msvc2016_64"
-#    PATH
+    PATH: "%PATH%;C:\\QT\\5.7"
 
 before_build:
   - mkdir build
   - cd build
-  - cmake -G "Visual Studio 14 2015 Win64" -DCMAKE_PREFIX_PATH="C:\\Qt\\5.7\\msvc2016_64" ..
+  - cmake -G "Visual Studio 14 2015 Win64"..
   - cmake --build .
 
 test_script:
