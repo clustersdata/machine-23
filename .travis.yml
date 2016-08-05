@@ -40,5 +40,5 @@ script:
     - cd build
     - cmake ..
     - make
-    - if [ "${TRAVIS_OS_NAME}" = "linux"]; then xvfb-run make test; fi
-    - if [ "${TRAVIS_OS_NAME}" = "osx"]; then make test; fi
+    - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then xvfb-run make test; fi
+    - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then make test; fi
