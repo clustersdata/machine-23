@@ -18,5 +18,7 @@ before_build:
 build_script:
   - cmake --build .
 
+build: off # disable automatic build
+
 test_script:
   - cmake --build . --target test
