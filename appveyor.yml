@@ -1,5 +1,19 @@
 # todo: write appveyor yml config
+
+image: Visual Studio 2015
+
+platform: x64
+
+configuration: Release
+
+environment:
+    QTDIR: "C:\Qt\5.7"
+
 before_build:
   - mkdir build
   - cd build
-  - cmake ..
+  - cmake -G "Visual Studio 14 2015 Win64" ..
+  - cmake --build .
+
+test_script:
+  - cmake --build . --target test
