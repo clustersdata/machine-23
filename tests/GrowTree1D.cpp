@@ -8,7 +8,7 @@
 #include <cmath>
 
 #ifndef M_PI
-#define M_PI = 3.1415926535897932384626433832795028841971693993751
+#define M_PI = 3.14159265358979323846
 #endif
 
 #include <iostream>
