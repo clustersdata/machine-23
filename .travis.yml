@@ -1,8 +1,13 @@
 language: cpp
 
-os:
-  - linux
-  - osx
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      env: QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
+    - os: osx
+      osx_image: xcode7.2
 
 compiler:
   - gcc
@@ -15,9 +20,9 @@ addons:
     packages:
     - qt54base
 
-env:
-  global:
-  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
+#env:
+#  global:
+#  - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
 
 
 script:
