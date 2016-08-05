@@ -1,21 +1,25 @@
 cmake_minimum_required(VERSION 3.0)
 
+project(jmachine)
+
 if(CMAKE_VERSION VERSION_LESS "3.1")
   message("Warning: cmake version less than 3.1")
   if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     # using regular Clang or AppleClang
-    add_definitions(-std=c++11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
   endif()
   if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
-    add_definitions(-std=c++11)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
   endif()
 else()
   message("cmake version at least 3.1; setting CMAKE_CXX_VERSION = 11")
-  set(CMAKE_CXX_VERSION 11)
+  set(CMAKE_CXX_STANDARD 11)
 endif()
-    
 
-project(jmachine)
+
+message("The CXX compiler flags are ${CMAKE_CXX_FLAGS}")
+
+
 
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
