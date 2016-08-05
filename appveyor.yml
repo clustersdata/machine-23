@@ -21,4 +21,4 @@ build_script:
 #build: off # disable automatic build
 
 test_script:
-  - cmake --build . --target test
+  - ctest
