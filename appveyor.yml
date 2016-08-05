@@ -10,16 +10,15 @@ environment:
     QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
     PATH: "%PATH%;C:\\Qt\\5.7;C:\\Qt\\5.7\\msvc2015_64\\bin"
 
-#before_build:
-
-
-build_script:
+before_build:
   - mkdir build
   - cd build
   - cmake -G "Visual Studio 14 2015 Win64" ..
+
+build_script:
   - cmake --build .
 
-build: off # disable automatic build
+#build: off # disable automatic build
 
 test_script:
   - cmake --build . --target test
