@@ -1,11 +1,12 @@
 language: cpp
 
-sudo: required
+os:
+  - linux
+  - osx
 
-os: 
-- linux
-  dist: trusty
-- osx
+compiler:
+  - gcc
+  - clang
 
 addons:
   apt:
@@ -18,9 +19,6 @@ env:
   global:
   - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
 
-compiler: 
-- clang
-- gcc
 
 script:
 - mkdir build
