@@ -1,1 +1,5 @@
 # todo: write appveyor yml config
+before_build:
+  - mkdir build
+  - cd build
+  - cmake ..
