@@ -7,7 +7,8 @@ platform: x64
 configuration: Release
 
 environment:
-    QTDIR: "C:\\Qt\\5.7"
+    QTDIR: "C:\\Qt\\5.7\\msvc2016_64"
+    PATH
 
 before_build:
   - mkdir build
