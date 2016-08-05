@@ -2,8 +2,10 @@ language: cpp
 
 sudo: required
 
-os:   linux
-dist: trusty
+os: 
+- linux
+  dist: trusty
+- osx
 
 addons:
   apt:
@@ -15,7 +17,6 @@ addons:
 env:
   global:
   - QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
-
 
 compiler: 
 - clang
