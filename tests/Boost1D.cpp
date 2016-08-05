@@ -2,15 +2,8 @@
 #include "DataSet.h"
 #include "DataNode.h"
 
-#ifndef _USE_MATH_DEFINES
-#define _USE_MATH_DEFINES
-#endif
+
 #include <cmath>
-
-#ifndef M_PI
-#define M_PI = 3.1415926535897932384626433832795028841971693993751
-#endif
-
 #include <iostream>
 #include <memory>
 
@@ -27,7 +20,7 @@ using DataPoint = DataSet::DataPoint;
 using jono::DataSet;
 using dvec = jono::DataSet::dvec;
 
-const double g_pi = M_PI;
+const double g_pi = 3.14159265358979323846;
 
 int main(int argc, char* argv[])
 {
