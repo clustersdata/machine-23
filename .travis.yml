@@ -6,9 +6,12 @@ matrix:
       dist: trusty
       sudo: required
       env: QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
-      compiler:
-        - gcc
-        - clang
+      compiler: gcc
+   - os: linux
+      dist: trusty
+      sudo: required
+      env: QTDIR=/opt/qt54 PATH=$PATH:$QTDIR/bin
+      compiler: clang
     - os: osx
       osx_image: xcode7.2
       compiler: clang
