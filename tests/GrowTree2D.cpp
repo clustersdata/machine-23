@@ -27,7 +27,7 @@ using DataPoint = DataSet::DataPoint;
 using jono::DataSet;
 using dvec = jono::DataSet::dvec;
 
-const double g_pi = M_PI;
+const double g_pi = 3.14159265358979323846;
 
 int main(int argc, char* argv[])
 {
