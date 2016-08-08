@@ -2,6 +2,29 @@
 
 #include <cctype>
 #include <cwctype>
+#include <stdexcept>
+
+// see https://tools.ietf.org/html/rfc4180
+//The ABNF grammar [2] appears as follows:
+//
+//   file = [header CRLF] record *(CRLF record) [CRLF]
+//
+//   header = name *(COMMA name)
+//
+//   record = field *(COMMA field)
+//
+//   name = field
+//
+//   field = (escaped / non-escaped)
+//
+//   escaped = DQUOTE *(TEXTDATA / COMMA / CR / LF / 2DQUOTE) DQUOTE
+//
+//   non-escaped = *TEXTDATA
+//
+//   COMMA = %x2C
+//
+//   CR = %x0D ;as per section 6.1 of RFC 2234 [2]
+
 
 namespace jono {
 
@@ -34,6 +57,63 @@ int CSV::nrows()
         compute_dimensions();
 
     return m_nrows;
+}
+
+std::string CSV::getToken(std::istream &stream)
+{
+    std::string tok = "";
+    char current;
+    char next;
+    bool is_wspace(false);
+    bool in_string(false);
+
+    // do nothing at end of stream
+    while(!stream.eof()) {
+        stream.get(current);
+        next = stream.peek();
+
+        // comma separation
+        if (!in_string && current == ',') {
+            break;
+        }
+        // end of a line
+        else if (next == '\n') {
+            break;
+        }
+        // newline gets own token
+        else if (current == '\n') {
+            return "\n";
+        }
+        // string stuff
+        else if (current == '"') {
+            // already inside of string
+            if (in_string) {
+                // double quote inside of string
+                if (next == '"') {
+                    tok += "\"\"";
+                    stream.get(next);
+                }
+                // end of string
+                else {
+                    tok += current;
+                    in_string = false;
+                }
+            }
+            // start of string
+            else {
+                tok += current;
+                in_string = true;
+            }
+        }
+        // generic case
+        else {
+            tok += current;
+        }
+
+    }
+
+    // todo: eat whitespace at beginning and end
+    return tok;
 }
 
 void jono::CSV::compute_dimensions()
