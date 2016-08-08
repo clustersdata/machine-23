@@ -39,3 +39,6 @@ add_subdirectory(src)
 add_subdirectory(tests)
 add_subdirectory(app)
 add_subdirectory(external)
+
+
+message("The CXX compiler is ${CMAKE_CXX_COMPILER_ID} with flags ${CMAKE_CXX_FLAGS}")
