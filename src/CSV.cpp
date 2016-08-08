@@ -28,6 +28,22 @@
 
 namespace jono {
 
+/** ***************************************************************************
+ *
+ *  jmachine:      machine learning toolkit
+ *
+ *  @file          src/CSV.cpp
+ *  @brief         Implements class CSV
+ *
+ *  @homepage      https://github.com/jmf1sh/machine
+ *  @license       GNU GPLv3 (see LICENSE)
+ *  @copyright     Jonathan Fisher 2016
+ *  @authors       Jonathan Fisher
+ *
+ *  ***************************************************************************
+ */
+
+
 void jono::CSV::open(const char *filename)
 {
     m_file.open(filename);

@@ -1,3 +1,19 @@
+/** ***************************************************************************
+ *
+ *  jmachine:      machine learning toolkit
+ *
+ *  @file          src/AverageLearner.h
+ *  @brief         Defines class AverageLearner
+ *
+ *  @homepage      https://github.com/jmf1sh/machine
+ *  @license       GNU GPLv3 (see LICENSE)
+ *  @copyright     Jonathan Fisher 2016
+ *  @authors       Jonathan Fisher
+ *
+ *  ***************************************************************************
+ */
+
+
 #ifndef JONO_AVERAGELEARNER_H
 #define JONO_AVERAGELEARNER_H
 

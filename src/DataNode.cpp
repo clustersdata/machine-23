@@ -1,3 +1,18 @@
+/** ***************************************************************************
+ *
+ *  jmachine:      machine learning toolkit
+ *
+ *  @file          src/DataNode.cpp
+ *  @brief         Implements class DataNode
+ *
+ *  @homepage      https://github.com/jmf1sh/machine
+ *  @license       GNU GPLv3 (see LICENSE)
+ *  @copyright     Jonathan Fisher 2016
+ *  @authors       Jonathan Fisher
+ *
+ *  ***************************************************************************
+ */
+
 #include "DataNode.h"
 
 namespace jono {
