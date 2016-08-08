@@ -41,4 +41,4 @@ add_subdirectory(app)
 add_subdirectory(external)
 
 
-message("The CXX compiler is ${CMAKE_CXX_COMPILER_ID} with flags ${CMAKE_CXX_FLAGS}")
+message("The build type is ${CMAKE_BUILD_TYPE}")
