@@ -38,7 +38,7 @@ script:
     - echo "Building for ${MKSPEC} in ${BUILD_MODE} mode..."
     - mkdir build
     - cd build
-    - cmake ..
+    - cmake .. -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
     - make
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then xvfb-run make test; fi
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then make test; fi
