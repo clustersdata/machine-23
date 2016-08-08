@@ -77,11 +77,12 @@ std::string CSV::getToken(std::istream &stream)
             break;
         }
         // end of a line
-        else if (next == '\n') {
+        else if (!in_string && next == '\n') {
+            tok += current;
             break;
         }
         // newline gets own token
-        else if (current == '\n') {
+        else if (!in_string && current == '\n') {
             return "\n";
         }
         // string stuff
@@ -91,7 +92,7 @@ std::string CSV::getToken(std::istream &stream)
                 // double quote inside of string
                 if (next == '"') {
                     tok += "\"\"";
-                    stream.get(next);
+                    stream.get(current);
                 }
                 // end of string
                 else {
