@@ -1,17 +1,17 @@
 
 image: Visual Studio 2015
 
-platform: x86
+platform: x64
 
 configuration: Release
 
 environment:
   matrix: 
-    - QTDIR: "C:\\Qt\\5.7\\msvc2015"
-      PATH: "%PATH%;C:\\Qt\\5.7\\msvc2015\\bin"
-      BUILD_SYSTEM: "Visual Studio 14 2015"
     - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      PATH: "C:\\MinGW\\bin;C:\\Qt\\5.7\\mingw53_32\\bin;%PATH%"
+      PATH: "%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
+      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+    - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
+      PATH: "C:\\MinGW\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
       BUILD_SYSTEM: "MingGW Makefiles"
       C_COMPILER: clang
       CXX_COMPILER: clang++
