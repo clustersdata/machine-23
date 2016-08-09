@@ -5,15 +5,15 @@ platform: x64
 
 configuration: Release
 
-install:
-  ############################################################################
-  # Install Ninja
-  ############################################################################
-  - set NINJA_URL="https://github.com/ninja-build/ninja/releases/download/v1.6.0/ninja-win.zip"
-  - appveyor DownloadFile %NINJA_URL% -FileName ninja.zip
-  - 7z x ninja.zip -oC:\projects\deps\ninja > nul
-  - set PATH=C:\projects\deps\ninja;%PATH%
-  - ninja --version
+#install:
+#  ############################################################################
+#  # Install Ninja
+#  ############################################################################
+#  - set NINJA_URL="https://github.com/ninja-build/ninja/releases/download/v1.6.0/ninja-win.zip"
+#  - appveyor DownloadFile %NINJA_URL% -FileName ninja.zip
+#  - 7z x ninja.zip -oC:\projects\deps\ninja > nul
+#  - set PATH=C:\projects\deps\ninja;%PATH%
+#  - ninja --version
 
 environment:
   matrix: 
@@ -23,7 +23,7 @@ environment:
       #TOOLCHAIN: "v140"
     - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       PATH: "C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
-      BUILD_SYSTEM: "Ninja"
+      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       C_COMPILER: clang-cl
       CXX_COMPILER: clang-cl
       #BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
