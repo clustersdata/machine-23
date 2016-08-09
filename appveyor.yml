@@ -23,7 +23,7 @@ install:
   #- set PATH=C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
   #- echo %PATH%
   #- dir C:\projects\deps\cmake\
-  -# cmake --version
+  #- cmake --version
   
 environment:
   matrix: 
