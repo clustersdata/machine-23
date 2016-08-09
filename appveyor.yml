@@ -12,14 +12,14 @@ environment:
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
     - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       PATH: "%PATH%;C:\\Qt\\5.7;C:\\Qt\\5.7\\msvc2015_64\\bin"
-      BUILD_SYSTEM: "NMake"
-      CMAKE_C_COMPILER: clang
-      CMAKE_CXX_COMPILER: clang++
+      BUILD_SYSTEM: "NMake Makefiles"
+      C_COMPILER: clang
+      CXX_COMPILER: clang++
 
 before_build:
   - mkdir build
   - cd build
-  - cmake -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release ..
+  - cmake -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER="%C_COMPILER%" -DCMAKE_CXX_COMPILER="%CXX_COMPILER%" ..
 
 build_script:
   - cmake --build . --config Release
