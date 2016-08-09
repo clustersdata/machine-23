@@ -17,19 +17,20 @@ configuration: Release
 
 environment:
   matrix: 
-    - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      PATH: "%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
+    - PATH: "%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
+      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       TOOLCHAIN: "v140"
-    - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      PATH: "C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
+    - PATH: "C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
+      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       TOOLCHAIN:  "LLVM-vs2014" 
 
 before_build:
   - mkdir build
   - cd build
-  - cmake .. -G "%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
+  - call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
+  - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
   #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
 
 build_script:
