@@ -8,6 +8,9 @@ configuration: Release
 environment:
     QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
     PATH: "%PATH%;C:\\Qt\\5.7;C:\\Qt\\5.7\\msvc2015_64\\bin"
+    test:
+      - "test1"
+      - "test2"
 
 before_build:
   - mkdir build
