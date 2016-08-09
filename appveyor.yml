@@ -19,10 +19,10 @@ install:
 ############################################################################
   - set CMAKE_URL="https://cmake.org/files/v3.6/cmake-3.6.1-win64-x64.zip"
   - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip
-  - 7z x cmake.zip -oC:\projects\deps\cmake > nul
-  - set PATH=C:\projects\deps\cmake\bin
-  - echo %PATH%
-  - dir C:\projects\deps\cmake\
+  - 7z x cmake.zip -oC:\projects\deps > nul
+  - set PATH=C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
+  #- echo %PATH%
+  #- dir C:\projects\deps\cmake\
   - cmake --version
 
 environment:
@@ -39,7 +39,7 @@ environment:
 before_build:
   - mkdir build
   - cd build
-  - call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
+  #- call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
   #- echo %PATH%
   #- cmake --version
   - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
