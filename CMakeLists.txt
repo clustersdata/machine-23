@@ -2,6 +2,14 @@ cmake_minimum_required(VERSION 3.0)
 
 project(jmachine)
 
+if(NOT CMAKE_BUILD_TYPE)
+  message(STATUS "Setting build type to 'Release' as none was specified.")
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
+  # Set the possible values of build type for cmake-gui
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release"
+    "MinSizeRel" "RelWithDebInfo")
+endif()
+
 if(CMAKE_VERSION VERSION_LESS "3.1")
   message("Warning: cmake version less than 3.1")
   if (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
@@ -17,7 +25,7 @@ else()
 endif()
 
 
-message("The CXX compiler flags are ${CMAKE_CXX_FLAGS}")
+#message("The CXX compiler flags are ${CMAKE_CXX_FLAGS}")
 
 
 
@@ -35,10 +43,14 @@ include_directories(${PROJECT_SOURCE_DIR}/external/qcustomplot)
 
 enable_testing()
 
+message("Adding targets")
 add_subdirectory(src)
-add_subdirectory(tests)
 add_subdirectory(app)
 add_subdirectory(external)
+
+message("Adding tests")
+add_subdirectory(tests)
+
 
 
 message("The build type is ${CMAKE_BUILD_TYPE}")

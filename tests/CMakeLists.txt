@@ -8,6 +8,7 @@
 # add_test(DataNode DataNode)
 # add_test(DataSet DataSet)
 
+
 file(GLOB test_sources "*.cpp")
 file(GLOB test_headers "*.h")
 
@@ -23,7 +24,7 @@ foreach(source_file ${test_sources})
   target_link_libraries(${base_name} jmaclib qcustomplot ${QT5_LIBRARIES})
   qt5_use_modules(${base_name} Widgets PrintSupport)
   add_test(${base_name} ${base_name})
-  message("Added test ${base_name}")
+  message(STATUS "Added test ${base_name}")
 endforeach(source_file)
 
 
