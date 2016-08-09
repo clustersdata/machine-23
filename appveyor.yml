@@ -31,14 +31,14 @@ environment:
       #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       TOOLCHAIN: "v140"
-    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
-      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-      TOOLCHAIN: "v140"
-    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
-      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-      TOOLCHAIN:  "LLVM-vs2014" 
+#    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
+#      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
+#      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+#      TOOLCHAIN: "v140"
+#    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
+#      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
+#      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+#      TOOLCHAIN:  "LLVM-vs2014" 
 
 before_build:
   - cmake --version
