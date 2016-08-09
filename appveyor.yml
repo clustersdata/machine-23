@@ -5,7 +5,7 @@ platform: x64
 
 configuration: Release
 
-#install:
+install:
 #  ############################################################################
 #  # Install Ninja
 #  ############################################################################
@@ -14,6 +14,14 @@ configuration: Release
 #  - 7z x ninja.zip -oC:\projects\deps\ninja > nul
 #  - set PATH=C:\projects\deps\ninja;%PATH%
 #  - ninja --version
+############################################################################
+# Install a recent CMake
+############################################################################
+  - set CMAKE_URL="https://cmake.org/files/v3.6/cmake-3.6.1-win64-x64.zip"
+  - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip
+  - 7z x cmake.zip -oC:\projects\deps\cmake > nul
+  - set PATH=C:\projects\deps\cmake\bin;%PATH%
+- cmake --version
 
 environment:
   matrix: 
@@ -30,8 +38,8 @@ before_build:
   - mkdir build
   - cd build
   - call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
-  - echo %PATH%
-  - cmake --version
+  #- echo %PATH%
+  #- cmake --version
   - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
   #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
 
