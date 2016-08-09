@@ -24,6 +24,8 @@ environment:
     - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       PATH: "C:\Program Files\LLVM\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
       BUILD_SYSTEM: "Ninja"
+      C_COMPILER: clang
+      CXX_COMPILER: clang++
       #BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       #TOOLCHAIN:  "LLVM-vs2014" 
       #TOOLCHAIN: "v140_clang_3_7"
@@ -31,7 +33,7 @@ environment:
 before_build:
   - mkdir build
   - cd build
-  - cmake -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release ..
+  - cmake -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release .. -DCMAKE_C_COMPILER="%C_COMPILER%" -DCMAKE_CXX_COMPILER="CXX_COMPILER"
   #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
 
 build_script:
