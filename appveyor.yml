@@ -13,7 +13,7 @@ install:
   - appveyor DownloadFile %NINJA_URL% -FileName ninja.zip
   - 7z x ninja.zip -oC:\projects\deps\ninja > nul
   - set PATH=C:\projects\deps\ninja;%PATH%
-- ninja --version
+  - ninja --version
 
 environment:
   matrix: 
