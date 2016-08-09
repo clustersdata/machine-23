@@ -31,9 +31,9 @@ environment:
       #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       TOOLCHAIN: "v140"
-#    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
+    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
 #      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-#      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
 #      TOOLCHAIN: "v140"
 #    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
 #      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
@@ -42,10 +42,11 @@ environment:
 
 before_build:
   - cmake --version
+  - ctest --version
   - mkdir build
   - cd build
   #- call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
-  - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
+  - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release# -T%TOOLCHAIN%
   #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
 
 build_script:
