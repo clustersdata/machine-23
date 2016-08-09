@@ -10,6 +10,7 @@ environment:
     - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       PATH: "%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+      TOOLCHAIN: "v140"
     - QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       PATH: "C:\\MinGW\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
       BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
