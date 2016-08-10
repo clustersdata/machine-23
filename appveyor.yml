@@ -27,8 +27,8 @@ install:
   
 environment:
   global:
-    PATH: C:\Qt\5.7\msvc2015_64\bin;%PATH%
     QTDIR: C:\Qt\5.7\msvc2015_64
+    PATH: %QTDIR%\bin;%PATH%
   matrix: 
     - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       #PATH: "C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
