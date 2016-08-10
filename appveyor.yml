@@ -34,9 +34,9 @@ environment:
       #PATH: "C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
 #      QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       TOOLCHAIN: v140
-    - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-      #PATH: C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
-      TOOLCHAIN: LLVM-vs2014
+#    - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+#      #PATH: C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
+#      TOOLCHAIN: LLVM-vs2014
       
 #      TOOLCHAIN: "v140"
 #    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
