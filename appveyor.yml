@@ -20,7 +20,7 @@ install:
   - set CMAKE_URL="https://cmake.org/files/v3.6/cmake-3.6.1-win64-x64.zip"
   - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip
   - 7z x cmake.zip -oC:\projects\deps > nul
-  #- set PATH=C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
+  - set PATH=C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
   #- echo %PATH%
   #- dir C:\projects\deps\cmake\
   #- cmake --version
@@ -35,7 +35,7 @@ environment:
 #      QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
       TOOLCHAIN: v140
     - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-      PATH: C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
+      #PATH: C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
       TOOLCHAIN: LLVM-vs2014
       
 #      TOOLCHAIN: "v140"
@@ -51,7 +51,6 @@ environment:
 before_build:
   - set PATH=%QTDIR%\bin;%PATH%
   - cmake --version
-  - ctest --version
   - mkdir build
   - cd build
   #- call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
