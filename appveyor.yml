@@ -27,10 +27,11 @@ install:
   
 environment:
   matrix: 
-    - PATH: "%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
-      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-      TOOLCHAIN: "v140"
+    - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
+      #PATH: "C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
+#      QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
+      
+#      TOOLCHAIN: "v140"
 #    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
 #      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
 #      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
@@ -45,6 +46,8 @@ before_build:
   - ctest --version
   - mkdir build
   - cd build
+  - set PATH=C:\Qt\5.7\msvc2015_64\bin;%PATH%
+  - set QTDIR=C:\Qt\5.7\msvc2015_64
   #- call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
   - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release # -T%TOOLCHAIN%
   #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
