@@ -28,7 +28,7 @@ install:
 environment:
   global:
     QTDIR: C:\Qt\5.7\msvc2015_64
-    PATH: ;%QTDIR%\bin;%PATH%
+    #PATH: C:\Qt\5.7\msvc2015_64;%PATH%
   matrix: 
     - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
       #PATH: "C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
@@ -49,6 +49,7 @@ environment:
 #      TOOLCHAIN:  "LLVM-vs2014" 
 
 before_build:
+  - set PATH=%QTDIR%\bin;%PATH%
   - cmake --version
   - ctest --version
   - mkdir build
