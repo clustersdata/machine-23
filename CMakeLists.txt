@@ -25,6 +25,12 @@ else()
 endif()
 
 
+# try to fix problem with msvc+clang
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_definitions(-D__clang__)
+endif()
+
+
 #message("The CXX compiler flags are ${CMAKE_CXX_FLAGS}")
 
 
