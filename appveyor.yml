@@ -56,6 +56,8 @@ before_build:
   #- call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
   - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
   #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
+  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
+
 
 build_script:
   - cmake --build . --config Release
