@@ -28,7 +28,6 @@ endif()
 #message("The CXX compiler flags are ${CMAKE_CXX_FLAGS}")
 
 
-
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/modules)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR})
 
@@ -39,7 +38,6 @@ set(CMAKE_AUTOMOC ON)
 
 include_directories(${PROJECT_SOURCE_DIR}/src)
 include_directories(${PROJECT_SOURCE_DIR}/external/qcustomplot)
-
 
 enable_testing()
 
@@ -52,5 +50,5 @@ message("Adding tests")
 add_subdirectory(tests)
 
 
-
+message("The compiler is ${CMAKE_CXX_COMPILER_ID}")
 message("The build type is ${CMAKE_BUILD_TYPE}")
