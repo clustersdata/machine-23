@@ -3,65 +3,29 @@ image: Visual Studio 2015
 
 platform: x64
 
-configuration: Release
+configuration:
+  - Release 
+  - Debug
 
-install:
-#  ############################################################################
-#  # Install Ninja
-#  ############################################################################
-#  - set NINJA_URL="https://github.com/ninja-build/ninja/releases/download/v1.6.0/ninja-win.zip"
-#  - appveyor DownloadFile %NINJA_URL% -FileName ninja.zip
-#  - 7z x ninja.zip -oC:\projects\deps\ninja > nul
-#  - set PATH=C:\projects\deps\ninja;%PATH%
-#  - ninja --version
-############################################################################
-# Install a recent CMake
-############################################################################
-  - set CMAKE_URL="https://cmake.org/files/v3.6/cmake-3.6.1-win64-x64.zip"
-  - appveyor DownloadFile %CMAKE_URL% -FileName cmake.zip
-  - 7z x cmake.zip -oC:\projects\deps > nul
-  - set PATH=C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
-  #- echo %PATH%
-  #- dir C:\projects\deps\cmake\
-  #- cmake --version
-  
 environment:
   global:
     QTDIR: C:\Qt\5.7\msvc2015_64
     #PATH: C:\Qt\5.7\msvc2015_64;%PATH%
   matrix: 
     - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-      #PATH: "C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
-#      QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-      TOOLCHAIN: v140
-#    - BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-#      #PATH: C:\projects\deps\cmake-3.6.1-win64-x64\bin;%PATH%
-#      TOOLCHAIN: LLVM-vs2014
-      
-#      TOOLCHAIN: "v140"
-#    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;%PATH%;C:\\Qt\\5.7\\msvc2015_64\\bin"
-#      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-#      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-#      TOOLCHAIN: "v140"
-#    - PATH: "C:\\projects\\deps\\cmake-3.6.1-win64-x64\\bin;C:\\Program Files\\LLVM\\bin;C:\\Qt\\5.7\\msvc2015_64\\bin;%PATH%"
-#      #QTDIR: "C:\\Qt\\5.7\\msvc2015_64"
-#      BUILD_SYSTEM: "Visual Studio 14 2015 Win64"
-#      TOOLCHAIN:  "LLVM-vs2014" 
+      QTDIR: C:\Qt\5.7\msvc2015_64
+    - BUILD_SYSTEM: "Visual Studio 14 2015"
+      QTDIR: C:\Qt\5.7\msvc2015
 
 before_build:
   - set PATH=%QTDIR%\bin;%PATH%
   - cmake --version
   - mkdir build
   - cd build
-  - call "c:\\program files (x86)\\microsoft visual studio 14.0\\vc\\vcvarsall.bat"
-  - del "C:\Program Files (x86)\MSBuild\14.0\Microsoft.Common.targets\ImportAfter\Xamarin.Common.targets"
-  - cmake .. -G"%BUILD_SYSTEM%" -DCMAKE_BUILD_TYPE=Release -T%TOOLCHAIN%
-  #- cmake -G"%BUILD_SYSTEM%" -T"%TOOLCHAIN%" -DCMAKE_BUILD_TYPE=Release ..
-
-
+  - cmake .. -G"%BUILD_SYSTEM%"
 
 build_script:
-  - cmake --build . --config Release
+  - cmake --build . --config ${configuration}
 
 test_script:
 - ctest
