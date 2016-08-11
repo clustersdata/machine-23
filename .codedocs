@@ -73,4 +73,4 @@ TAGLINKS =
 # USE_MDFILE_AS_MAINPAGE =
 # VERBATIM_HEADERS =
 #
-EXCLUDE = external/
+EXCLUDE = ./external/
