@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 
 project(jmachine)
 
+option(BUILD_COVERAGE "Build with -coverage flag" OFF)
+
 if(NOT CMAKE_BUILD_TYPE)
   message(STATUS "Setting build type to 'Release' as none was specified.")
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build." FORCE)
@@ -24,11 +26,18 @@ else()
   set(CMAKE_CXX_STANDARD 11)
 endif()
 
-
-# try to fix problem with msvc+clang
-if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_definitions(-D__clang__)
+if(CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+  set(COMPILER_IS_GNU_OR_CLANG TRUE)
+else()
+  set(COMPILER_IS_GNU_OR_CLANG FALSE)
 endif()
+
+if(BUILD_COVERAGE AND COMPILER_IS_GNU_OR_CLANG)
+  message("Code coverage enabled for this build")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -coverage")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -coverage")
+endif()
+
 
 
 #message("The CXX compiler flags are ${CMAKE_CXX_FLAGS}")
