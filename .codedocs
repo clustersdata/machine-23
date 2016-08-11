@@ -73,5 +73,5 @@ TAGLINKS =
 # USE_MDFILE_AS_MAINPAGE =
 # VERBATIM_HEADERS =
 #
-EXCLUDE_PATTERNS = external/* external/qcustomplot/* test/*
+EXCLUDE_PATTERNS = external/qcustomplot/* test/*
 USE_MDFILE_AS_MAINPAGE = README.md
