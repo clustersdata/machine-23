@@ -18,3 +18,4 @@ The basic aim of this project is to use C++ features such as inheritance and ope
 | Travis | master |[![Build Status](https://travis-ci.org/jmf1sh/machine.svg?branch=master)](https://travis-ci.org/jmf1sh/machine)| 
 | AppVeyor | master | [![Build status](https://ci.appveyor.com/api/projects/status/g4nyvry4rrorw33u?svg=true)](https://ci.appveyor.com/project/jmf1sh/machine)|
 | CodeDocs | master | [![Docs status](https://codedocs.xyz/jmf1sh/machine.svg)](https://codedocs.xyz/jmf1sh/machine)
+| Codecov | master | [![codecov](https://codecov.io/gh/jmf1sh/machine/branch/master/graph/badge.svg)](https://codecov.io/gh/jmf1sh/machine) |
