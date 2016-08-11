@@ -12,8 +12,8 @@ This project is not intended to replace, or to compete with any other open-sourc
 
 The basic aim of this project is to use C++ features such as inheritance and operator overloading to allow complex learners to be built out of very simple ones. The basic building block is an ILearner, which is a very simple interface. As a concrete implementation, there is for example the AverageLearner class, which does nothing but compute the average value of a dataset. A TreeLearner can be constructed by recursively partitioning the dataset, with an ILearner attached to each node. Abstract learners can be added together (via operator overloading), to produce an instance of EnsembleLearner. Fitting an EnsembleLearner simply chooses an appropriate weighted linear combination of the ILearners in the ensemble, etc.
 
-## Continuous integration status
-| CI | branch | status |
+## Github integrations
+| Integration | branch | status |
 |----|---|-----|
 | Travis | master |[![Build Status](https://travis-ci.org/jmf1sh/machine.svg?branch=master)](https://travis-ci.org/jmf1sh/machine)| 
 | AppVeyor | master | [![Build status](https://ci.appveyor.com/api/projects/status/g4nyvry4rrorw33u?svg=true)](https://ci.appveyor.com/project/jmf1sh/machine)|
