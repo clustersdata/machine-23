@@ -13,12 +13,10 @@ os:
     - osx
 
 env:
-  - BUILD_TYPE=Release
-    BUILD_COVERAGE=FALSE
-  - BUILD_TYPE=Debug
-    BUILD_COVERAGE=FALSE
   - BUILD_TYPE=Debug
     BUILD_COVERAGE=TRUE
+  - BUILD_TYPE=Release
+    BUILD_COVERAGE=FALSE
 
 install:
     - if [ "${TRAVIS_OS_NAME}" = "linux" -a "${CXX}" = "clang++" ]; then export MKSPEC=linux-clang; fi
