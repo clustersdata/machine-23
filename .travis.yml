@@ -14,7 +14,11 @@ os:
 
 env:
   - BUILD_TYPE=Release
+    BUILD_COVERAGE=FALSE
   - BUILD_TYPE=Debug
+    BUILD_COVERAGE=FALSE
+  - BUILD_TYPE=Debug
+    BUILD_COVERAGE=TRUE
 
 install:
     - if [ "${TRAVIS_OS_NAME}" = "linux" -a "${CXX}" = "clang++" ]; then export MKSPEC=linux-clang; fi
@@ -38,7 +42,10 @@ script:
     - echo "Building for ${MKSPEC} in ${BUILD_MODE} mode..."
     - mkdir build
     - cd build
-    - cmake .. -DCMAKE_BUILD_TYPE=${BUILD_TYPE}
+    - cmake .. -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DBUILD_COVERAGE=${BUILD_COVERAGE}
     - make
     - if [ "${TRAVIS_OS_NAME}" = "linux" ]; then xvfb-run make test; fi
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then make test; fi
+
+after_success:
+  - if [ $BUILD_COVERAGE ]; then bash <(curl -s https://codecov.io/bash); fi
