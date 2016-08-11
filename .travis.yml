@@ -46,4 +46,4 @@ script:
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then make test; fi
 
 after_success:
-  - if [ "${BUILD_COVERAGE}" = "TRUE" -a "${CXX}" = "clang++" -a "${TRAVIS_OS_NAME}" = "linux"]; then echo "Checking code coverage..."; rm -rf external; bash <(curl -s https://codecov.io/bash); fi
+  - if [ "${BUILD_COVERAGE}" = "TRUE" -a "${CXX}" = "clang++" -a "${TRAVIS_OS_NAME}" = "linux"]; then echo "Checking code coverage..."; rm -rf external; bash <(curl https://codecov.io/bash); fi
