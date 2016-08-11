@@ -48,4 +48,4 @@ script:
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then make test; fi
 
 after_success:
-  - if [ $BUILD_COVERAGE ]; then bash <(curl -s https://codecov.io/bash); fi
+  - if [ $BUILD_COVERAGE ]; then rm -rf external; bash <(curl -s https://codecov.io/bash); fi
