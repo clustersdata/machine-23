@@ -23,7 +23,7 @@ DOXYFILE = Doxyfile
 
 TAGLINKS =
 
-EXCLUDE_PATTERNS = */test/* */external/*
+#EXCLUDE_PATTERNS = */test/* */external/*
 
 #---------------------------------------------------------------------------
 # Doxygen Configuration
