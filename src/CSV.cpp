@@ -75,6 +75,13 @@ int CSV::nrows()
     return m_nrows;
 }
 
+/**
+ * Parses the next token available from the given stream. Returns
+ * empty string if there are no tokens available (e.g. at the end of the 
+ * stream). Throws exception on parsing error.
+ * @param[in] stream  The std::istream to read from
+ * @return The next token in the stream
+ */
 std::string CSV::getToken(std::istream &stream)
 {
     std::string tok = "";

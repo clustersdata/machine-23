@@ -1,3 +1,18 @@
+/** ***************************************************************************
+ *
+ *  jmachine:      machine learning toolkit
+ *
+ *  @file          src/CSV.h
+ *  @brief         Defines class CSV
+ *
+ *  @homepage      https://github.com/jmf1sh/machine
+ *  @license       GNU GPLv3 (see LICENSE)
+ *  @copyright     Jonathan Fisher 2016
+ *  @authors       Jonathan Fisher
+ *
+ *  ***************************************************************************
+ */
+
 #ifndef JONO_CSV_H
 #define JONO_CSV_H
 
@@ -24,22 +39,6 @@
 
 
 
-/** ***************************************************************************
- *
- *  jmachine:      machine learning toolkit
- *
- *  @file          src/CSV.h
- *  @brief         Defines class CSV
- *
- *  @homepage      https://github.com/jmf1sh/machine
- *  @license       GNU GPLv3 (see LICENSE)
- *  @copyright     Jonathan Fisher 2016
- *  @authors       Jonathan Fisher
- *
- *  ***************************************************************************
- */
-
-
 // includes from standard library
 #include <iostream>
 #include <fstream>
@@ -52,17 +51,14 @@ namespace jono {
 
 class CSV {
 public:
-    //! Open for reading
-    void open(const char* filename);
+    void open(const char* filename); //!< Open file for reading
+    void read(); //!<  Read entire file into memory
+    void close(); //!<  Close file if open
 
-    //! Read entire file into memory
-    void read();
-    void close();
+    int nrows(); //!<  Return number of rows
+    int ncols(); //!<  Return number of columns
 
-    int nrows();
-    int ncols();
-
-    std::string getToken(std::istream& stream);
+    std::string getToken(std::istream& stream); //!<  get the next token from the stream.
 
 private:
 
@@ -75,8 +71,8 @@ private:
     int m_nrows;
     int m_ncols;
 
-    std::vector<std::string> m_header;
-    std::vector<std::vector<double>> m_rows;
+    std::vector<std::string> m_header; /**< Header row of the CSV file */
+    std::vector<std::vector<double>> m_rows; /**< Vector containing the rows of the CSV file */
 };
 
 

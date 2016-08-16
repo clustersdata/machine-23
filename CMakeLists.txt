@@ -67,3 +67,19 @@ add_subdirectory(tests)
 
 message("The compiler is ${CMAKE_CXX_COMPILER_ID}")
 message("The build type is ${CMAKE_BUILD_TYPE}")
+
+
+if(BUILD_COVERAGE)
+  add_custom_target(coverage COMMAND ${CMAKE_COMMAND} ${CMAKE_BINARY_DIR})
+  find_program(GCOV gcov)
+  file(GLOB_RECURSE gcno_files "${CMAKE_BINARY_DIR}/*.gcno")
+  message("gcno files are ${gcno_files}")
+
+  foreach(gcno_file ${gcno_files})
+    get_filename_component(gcno_base ${gcno_file} NAME_WE)
+    get_filename_component(gcno_path ${gcno_file} DIRECTORY)    
+    #message("base file name is ${gcno_base}, directory path is ${gcno_path}, full name is ${gcno_file}")#
+    add_custom_command(TARGET coverage COMMAND ${GCOV} --object-directory ${gcno_path} ${gcno_file})
+  endforeach()
+  
+endif()
