@@ -13,6 +13,14 @@ option(BUILD_OPTIMIZED_DEBUG "Build with debug optimizations (gcc only)" OFF)
 include(CheckCompiler)
 include(EnableModernCxx)
 
+if(BUILD_COVERAGE)
+  include(CodeCoverage)
+  set(ignore_dirs "'/usr/*'")
+  #list(APPEND ignore_dirs "'*/tests/*'")
+  list(APPEND ignore_dirs "'*/external/*'")
+  add_coverage_target(coverage "${ignore_dirs}")
+endif()
+
 
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5PrintSupport REQUIRED)
@@ -37,11 +45,3 @@ message("The compiler is ${CMAKE_CXX_COMPILER_ID}")
 message("The build type is ${CMAKE_BUILD_TYPE}")
 
 
-# code coverage report
-if(BUILD_COVERAGE)
-  include(CodeCoverage)
-  set(ignore_dirs "'/usr/*'")
-  #list(APPEND ignore_dirs "'*/tests/*'")
-  list(APPEND ignore_dirs "'*/external/*'")
-  add_coverage_target(coverage "${ignore_dirs}")
-endif()
