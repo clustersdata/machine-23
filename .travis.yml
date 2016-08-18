@@ -49,5 +49,6 @@ script:
     - if [ "${TRAVIS_OS_NAME}" = "osx" ]; then make test; fi
 
 after_success:
-  - rm -rf external
-  - if [ "${BUILD_COVERAGE}" = "ON" ]; then bash <(curl https://codecov.io/bash); fi
+- if [ "${BUILD_COVERAGE}" = "ON" ]; then make coverage; fi
+- if [ "${BUILD_COVERAGE}" = "ON" ]; then bash <(curl https://codecov.io/bash); fi
+  
